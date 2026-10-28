@@ -4,7 +4,7 @@ Sentinel-2 time series, Random Forest classification and a transparent gross-rev
 
 ![Crop map](results/maps/crop_map.png)
 
-*Crop map of the study area (about 42 x 20 km). TODO: add the legend (cereals, alfalfa, tree crops, market gardening, bare soil, built-up / other).*
+*Crop map of the study area (about 42 x 20 km). Yellow: cereals, green: alfalfa, dark green: tree crops, purple: market gardening, brown: bare soil, grey: built-up / other.*
 
 ## What this project does
 
@@ -22,7 +22,7 @@ Areas come from the smoothed map at 30 m resolution. Treat them as orders of mag
 | Cereals | 31,005 |
 | Alfalfa | 3,033 |
 | Tree crops | 6,057 |
-| Market gardening | 2,081 |
+| Market gardening (low reliability) | 2,081 |
 | Bare soil | 17,018 |
 | Built-up / other | 25,367 |
 
@@ -47,14 +47,15 @@ Alfalfa and market gardening are not valued yet because no reliable yield and pr
 
 Stratified 5-fold cross-validation on the training points.
 
-- Overall accuracy: TODO (copy from the notebook output, section 3).
-- Main confusion: TODO (for example bare soil versus built-up / other, which have a similar NDVI signature).
+- Overall accuracy: 0.58 (5-fold cross-validation, 119 points). Best classes: tree crops (F1 0.81) and alfalfa (F1 0.71); weakest: market gardening (F1 0.18).
+- Main confusions: market gardening is mostly mistaken for alfalfa and cereals, cereals for bare soil, and bare soil for built-up / other, which share a similar NDVI signature.
 
-The estimate is noisy and probably optimistic: there are few points and they are spatially clustered. A first version with four classes had a cross-validated accuracy of about 0.69.
+The estimate is noisy and probably optimistic: there are few points and they are spatially clustered. A first version with four classes had a cross-validated accuracy of about 0.69 (not directly comparable: fewer and easier classes).
 
 ## Limitations
 
 - Labels come from visual interpretation, not field data.
+- Market gardening is the least reliable class (F1 0.18): its area should not be used for decisions.
 - Sugar beet is not modelled and is probably absorbed by other classes, mostly cereals.
 - Natural steppe and rangeland have no class and end up in "bare soil" or "built-up / other", so these two classes are overestimated.
 - Tree crops mix olive and citrus but are valued as olive.
