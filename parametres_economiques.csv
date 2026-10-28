@@ -1,0 +1,5 @@
+classe,culture,rend_bas,rend_central,rend_haut,prix_bas,prix_central,prix_haut,source
+1,Cereals,3.5,4.0,4.4,2800.0,2800.0,2800.0,"Yield: La Vie eco (irrigated 35-40 q/ha); ORMVA Haouz 2016-17 (44 q/ha, other perimeter). Price: soft wheat reference price 280 Dh/q (ONICL, 2026 campaign)"
+3,Alfalfa,,,,,,,to be completed
+4,Tree crops (olive proxy),2.2,3.2,3.9,4000.0,5000.0,6000.0,"Yield: ORMVAT (3.2 t/ha), 2.2 t/ha irrigated 2024-25, about 3.9 t/ha normal year (computed). Olive price 4-6 Dh/kg (Bladi, Feb 2026)"
+5,Market gardening,,,,,,,to be completed
